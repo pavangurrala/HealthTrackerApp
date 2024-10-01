@@ -14,7 +14,7 @@ fun main() {
 }
 fun addUser(){
     val user = User()
-    println("Please enter the following for the user:")
+    println("Please enter the following for the username:")
     print("    Name: ")
     user.name = readln()
     print("    Email: ")
