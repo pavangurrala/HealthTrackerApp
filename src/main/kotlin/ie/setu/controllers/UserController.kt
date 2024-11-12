@@ -10,6 +10,7 @@ import io.javalin.http.Context
 
 object UserController {
     private val userDAO = UserDAO()
+    //method to get all users in db
     fun getAllUsers(ctx: Context) {
         ctx.json(userDAO.getAll())
     }
