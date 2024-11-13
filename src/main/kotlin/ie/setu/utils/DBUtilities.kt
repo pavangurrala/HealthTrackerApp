@@ -6,6 +6,8 @@ import ie.setu.domain.db.Users
 import ie.setu.domain.models.Activity
 import ie.setu.domain.models.AppointmentScheduling
 import org.jetbrains.exposed.sql.ResultRow
+import ie.setu.domain.db.MedicationTracker
+import ie.setu.domain.models.MedicationTracking
 
 
 fun mapToUser(it: ResultRow) = User (
@@ -34,4 +36,13 @@ fun mapToAppointmentScheduling(it: ResultRow) = AppointmentScheduling (
     reasonforappointment = it[AppointmentScheduler.reasonforappointment],
     appointmentstatus = it[AppointmentScheduler.appointmentstatus],
     patientid = it[AppointmentScheduler.patientid]
+)
+
+fun mapToMedicationTracker(it: ResultRow) = MedicationTracking(
+    id = it[MedicationTracker.id],
+    medicinename = it[MedicationTracker.medicinename],
+    datetimeofintake = it[MedicationTracker.datetimeofintake],
+    dosage = it[MedicationTracker.dosage],
+    medtakenornot = it[MedicationTracker.medtakenornot],
+    patientid = it[MedicationTracker.patientid]
 )
