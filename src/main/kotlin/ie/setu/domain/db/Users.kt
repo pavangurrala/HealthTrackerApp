@@ -9,5 +9,6 @@ object Users : Table(name = "users") {
     val height = double("height")
     val weight = double("weight")
     val gender = varchar("gender", 50)
-    override val primaryKey = PrimaryKey(id)
+    val dateofbirth = varchar("dateofbirth", 50)
+    override val primaryKey = PrimaryKey(Users.id, name="PK_USER_ID")
 }

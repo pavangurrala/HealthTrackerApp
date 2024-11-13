@@ -41,6 +41,7 @@ class UserDAO {
                 it[weight] = user.weight
                 it[height] = user.height
                 it[gender] = user.gender
+                it[dateofbirth] = user.dateofbirth
             }
         }
     }
@@ -52,6 +53,7 @@ class UserDAO {
                 it[weight] = user.weight
                 it[height] = user.height
                 it[gender] = user.gender
+                it[dateofbirth] = user.dateofbirth
             }
         }
     }
