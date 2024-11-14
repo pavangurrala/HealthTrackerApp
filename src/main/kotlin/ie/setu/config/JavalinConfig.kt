@@ -7,6 +7,7 @@ import ie.setu.utils.jsonObjectMapper
 import io.javalin.json.JavalinJackson
 import ie.setu.controllers.AppointmentController
 import ie.setu.controllers.MedicationTrackingController
+import ie.setu.controllers.LabReportController
 
 class JavalinConfig {
     fun startJavalinService(): Javalin {
@@ -45,5 +46,10 @@ class JavalinConfig {
         app.post("/api/medicationtracker", MedicationTrackingController::addMedication)
         app.patch("/api/medicationtracker/{med-id}", MedicationTrackingController::updateMedication)
         app.delete("/api/medicationtracker/{med-id}", MedicationTrackingController::deleteMedication)
+        app.get("/api/labreports", LabReportController::getAllLabReports)
+        app.get("/api/labreports/{user-id}", LabReportController::getLabReportsByUserID)
+        app.post("/api/labreports", LabReportController::addLabReport)
+        app.patch("/api/labreports/{lab-id}", LabReportController::updateLabReport)
+        app.delete("/api/labreports/{lab-id}", LabReportController::deleteLabReport)
     }
 }

@@ -8,6 +8,8 @@ import ie.setu.domain.models.AppointmentScheduling
 import org.jetbrains.exposed.sql.ResultRow
 import ie.setu.domain.db.MedicationTracker
 import ie.setu.domain.models.MedicationTracking
+import ie.setu.domain.db.Labreports
+import ie.setu.domain.models.LabReport
 
 
 fun mapToUser(it: ResultRow) = User (
@@ -45,4 +47,12 @@ fun mapToMedicationTracker(it: ResultRow) = MedicationTracking(
     dosage = it[MedicationTracker.dosage],
     medtakenornot = it[MedicationTracker.medtakenornot],
     patientid = it[MedicationTracker.patientid]
+)
+
+fun mapToLabReport(it: ResultRow) = LabReport(
+    id = it[Labreports.id],
+    reportname = it[Labreports.reportname],
+    reporttype = it[Labreports.reporttype],
+    reportsource = it[Labreports.reportsource],
+    patientid = it[Labreports.patientid]
 )
