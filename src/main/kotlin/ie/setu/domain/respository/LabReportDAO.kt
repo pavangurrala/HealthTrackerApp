@@ -55,4 +55,9 @@ class LabReportDAO {
             Labreports.deleteWhere { Labreports.id eq id }
         }
     }
+    fun deleteLabReportByUserId(userid :Int){
+        return transaction{
+            Labreports.deleteWhere { Labreports.patientid eq userid }
+        }
+    }
 }

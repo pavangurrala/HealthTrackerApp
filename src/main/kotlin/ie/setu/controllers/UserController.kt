@@ -18,12 +18,19 @@ object UserController {
         val user = userDAO.getById(ctx.pathParam("user-id").toInt())
         if(user != null){
             ctx.json(user)
+            ctx.status(200)
+        }
+        else{
+            ctx.status(404)
         }
     }
     fun getUserByEmail(ctx: Context) {
         val user = userDAO.getuserbyemaiid(ctx.pathParam("email").toString())
         if(user != null){
             ctx.json(user)
+            ctx.status(200)
+        }else{
+            ctx.status(404)
         }
     }
     fun addUser(ctx: Context) {

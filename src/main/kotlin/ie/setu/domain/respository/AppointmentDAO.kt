@@ -58,4 +58,9 @@ class AppointmentDAO {
             AppointmentScheduler.deleteWhere { AppointmentScheduler.id eq id }
         }
     }
+    fun deleteappointmentbyuserid(userId: Int) {
+        return transaction {
+            AppointmentScheduler.deleteWhere { AppointmentScheduler.patientid eq userId }
+        }
+    }
 }

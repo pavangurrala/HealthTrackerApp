@@ -69,5 +69,9 @@ class ActivityDAO {
             Activities.deleteWhere { Activities.id eq id }
         }
     }
-
+    fun deleteActivityByUserId (userId: Int): Int{
+        return transaction{
+            Activities.deleteWhere { Activities.userid eq userId }
+        }
+    }
 }
