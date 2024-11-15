@@ -26,7 +26,7 @@ class JavalinConfig {
     private fun registerRoutes(app: Javalin) {
         app.get("/api/users", UserController::getAllUsers)
         app.get("/api/users/{user-id}",UserController::getUserById)
-        app.get("/api/users/{email}",UserController::getUserByEmail)
+        app.get("/api/users/email/{email}",UserController::getUserByEmail)
         app.post("/api/users",UserController::addUser)
         app.patch("/api/users/{user-id}",UserController::updateUser)
         app.delete("/api/users/{user-id}", UserController::deleteUser)

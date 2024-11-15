@@ -64,5 +64,11 @@ class MedicationTrackerDAO {
             MedicationTracker.deleteWhere { MedicationTracker.id eq id }
         }
     }
+    //deletes the existing medication record with specific user ID
+    fun deleteMedicationTrackingByUserID(userID:Int){
+        return transaction {
+            MedicationTracker.deleteWhere { MedicationTracker.patientid eq userID }
+        }
+    }
 
 }
