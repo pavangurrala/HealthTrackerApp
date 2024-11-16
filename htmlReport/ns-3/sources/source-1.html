@@ -1,0 +1,256 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > ActivityController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">ie.setu.controllers</a>
+</div>
+
+<h1>Coverage Summary for Class: ActivityController (ie.setu.controllers)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ActivityController</td>
+<td class="coverageStat">
+  <span class="percent">
+    12.5%
+  </span>
+  <span class="absValue">
+    (1/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    5.6%
+  </span>
+  <span class="absValue">
+    (2/36)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ActivityController$addActivity$$inlined$readValue$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">ActivityController$updateActivity$$inlined$readValue$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    10%
+  </span>
+  <span class="absValue">
+    (1/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/12)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    5.3%
+  </span>
+  <span class="absValue">
+    (2/38)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package ie.setu.controllers
+&nbsp;import com.fasterxml.jackson.databind.SerializationFeature
+&nbsp;import com.fasterxml.jackson.datatype.joda.JodaModule
+&nbsp;import ie.setu.domain.models.Activity
+&nbsp;import ie.setu.domain.respository.ActivityDAO
+&nbsp;import ie.setu.domain.respository.UserDAO
+&nbsp;import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+&nbsp;import com.fasterxml.jackson.module.kotlin.readValue
+&nbsp;import io.javalin.http.Context
+&nbsp;
+&nbsp;object ActivityController {
+<b class="fc">&nbsp;    private val activityDao = ActivityDAO()</b>
+<b class="fc">&nbsp;    private val userDao = UserDAO()</b>
+&nbsp;    //method to get all activities in db while mapper handles deserialization of Joda time into a string
+&nbsp;    fun getAllActivities(ctx: Context) {
+<b class="nc">&nbsp;        val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)</b>
+<b class="nc">&nbsp;        ctx.json(mapper.writeValueAsString(activityDao.getAll()))</b>
+<b class="nc">&nbsp;        ctx.status(200)</b>
+&nbsp;    }
+&nbsp;    //get activities for specific user by ID
+&nbsp;    fun getactivityByUserID(ctx: Context) {
+<b class="nc">&nbsp;        if(userDao.getById(ctx.pathParam(&quot;user-id&quot;).toInt()) !=null){</b>
+<b class="nc">&nbsp;            val activities = activityDao.findByUserId(ctx.pathParam(&quot;user-id&quot;).toInt())</b>
+<b class="nc">&nbsp;            if(activities.isNotEmpty()){</b>
+<b class="nc">&nbsp;                val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)</b>
+<b class="nc">&nbsp;                ctx.json(mapper.writeValueAsString(activities))</b>
+<b class="nc">&nbsp;                ctx.status(200)</b>
+&nbsp;            }
+&nbsp;            else{
+<b class="nc">&nbsp;                ctx.status(404)</b>
+&nbsp;            }
+&nbsp;        }else{
+<b class="nc">&nbsp;            ctx.status(404)</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;    // update the existing the activity by Activity ID
+&nbsp;    fun updateActivity(ctx: Context) {
+<b class="nc">&nbsp;        val activity = activityDao.findByActivityId(ctx.pathParam(&quot;act-id&quot;).toInt())</b>
+<b class="nc">&nbsp;        if(activity!=null){</b>
+&nbsp;             // val user = mapper.readValue&lt;User&gt;(ctx.body())
+<b class="nc">&nbsp;            val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)</b>
+<b class="nc">&nbsp;            val newactivity =mapper.readValue&lt;Activity&gt;(ctx.body())</b>
+<b class="nc">&nbsp;            ctx.json(mapper.writeValueAsString(activityDao.updateActivity(activity.id, newactivity)))</b>
+<b class="nc">&nbsp;            ctx.status(200)</b>
+&nbsp;        }else{
+<b class="nc">&nbsp;            ctx.status(404)</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;    //add new Activity to the DB
+&nbsp;    fun addActivity(ctx: Context) {
+<b class="nc">&nbsp;        val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)</b>
+<b class="nc">&nbsp;        val activity = mapper.readValue&lt;Activity&gt;(ctx.body())</b>
+<b class="nc">&nbsp;        ctx.json(activity)</b>
+<b class="nc">&nbsp;        ctx.status(201)</b>
+&nbsp;    }
+&nbsp;    //delete the existing Activity by ActivityID from DB
+&nbsp;    fun deleteActivity(ctx: Context) {
+<b class="nc">&nbsp;        if(activityDao.deleteactivity(ctx.pathParam(&quot;act-id&quot;).toInt())!=0){</b>
+<b class="nc">&nbsp;            ctx.status(204)</b>
+&nbsp;        }
+&nbsp;        else{
+<b class="nc">&nbsp;            ctx.status(404)</b>
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;    //delete activity belongs to specific user
+&nbsp;    fun deleteActivityByUserID(ctx: Context) {
+<b class="nc">&nbsp;        if(activityDao.deleteActivityByUserId(ctx.pathParam(&quot;user-id&quot;).toInt())!=0){</b>
+<b class="nc">&nbsp;            ctx.status(204)</b>
+&nbsp;        }else{
+<b class="nc">&nbsp;            ctx.status(404)</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;    // Get existng activity by ID from the DB
+&nbsp;    fun getActivityByID(ctx: Context) {
+<b class="nc">&nbsp;        val activity = activityDao.findByActivityId(ctx.pathParam(&quot;act-id&quot;).toInt())</b>
+<b class="nc">&nbsp;        if(activity!=null){</b>
+<b class="nc">&nbsp;            val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)</b>
+<b class="nc">&nbsp;            ctx.json(mapper.writeValueAsString(activity))</b>
+<b class="nc">&nbsp;            ctx.status(200)</b>
+&nbsp;        }else{
+<b class="nc">&nbsp;            ctx.status(404)</b>
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-11-16 18:21</div>
+</div>
+</body>
+</html>

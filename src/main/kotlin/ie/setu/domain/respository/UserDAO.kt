@@ -57,7 +57,7 @@ class UserDAO {
             }
         }
     }
-    fun deleteUser(id: Int) {
+    fun deleteUser(id: Int): Int {
         return transaction{
             Users.deleteWhere { Users.id eq id }
         }

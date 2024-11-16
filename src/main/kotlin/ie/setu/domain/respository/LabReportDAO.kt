@@ -30,14 +30,15 @@ class LabReportDAO {
             Labreports.selectAll().where { Labreports.id eq id }.map{mapToLabReport(it)}.firstOrNull()
         }
     }
-    fun addLabReports(labReport: LabReport){
+    fun addLabReports(labReport: LabReport) :Int{
         return transaction{
-            Labreports.insert {
+           val labreportID = Labreports.insert {
                 it[reportname] = labReport.reportname
                 it[reporttype] = labReport.reporttype
                 it[reportsource] = labReport.reportsource
                 it[patientid] = labReport.patientid
-            }
+            }get Labreports.id
+            labreportID
         }
     }
     fun updateLabReport(id: Int, labReport: LabReport){
@@ -55,7 +56,7 @@ class LabReportDAO {
             Labreports.deleteWhere { Labreports.id eq id }
         }
     }
-    fun deleteLabReportByUserId(userid :Int){
+    fun deleteLabReportByUserId(userid :Int):Int{
         return transaction{
             Labreports.deleteWhere { Labreports.patientid eq userid }
         }
