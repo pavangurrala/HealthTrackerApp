@@ -1,0 +1,792 @@
+openapi: 3.0.0
+info:
+  title: HealthTrackerApp
+  version: 1.0.0
+  description: API for managing users with CRUD operations
+  contact:
+    name: Pavan Gurrala
+    email: 20109436@mail.wit.ie
+
+paths:
+  /api/users:
+    get:
+      summary: Get all users
+      description: Retrieve a list of all users.
+      responses:
+        '200':
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+    post:
+      summary: Add a new user
+      description: Create a new user with provided details.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid input
+
+  /api/users/{user-id}:
+    get:
+      summary: Get user by ID
+      description: Retrieve a user by their unique ID.
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: User retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+    patch:
+      summary: Update user by ID
+      description: Update a user's information by their unique ID.
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+    delete:
+      summary: Delete user by ID
+      description: Remove a user by their unique ID.
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: User deleted successfully
+        '404':
+          description: User not found
+
+  /api/users/email/{email}:
+    get:
+      summary: Get user by email
+      description: Retrieve a user by their unique email address.
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: User retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+  /api/appointmentscheduler:
+    get:
+      summary: Get all appointments
+      description: Retrieve a list of all appointments.
+      responses:
+        '200':
+          description: A list of appointments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Appointment'
+    post:
+      summary: Add a new appointment
+      description: Create a new appointment with the specified details.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Appointment'
+      responses:
+        '201':
+          description: Appointment created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+        '400':
+          description: Invalid input
+  /api/appointmentscheduler/{user-id}:
+    get:
+      summary: Get appointments by user ID
+      description: Retrieve all appointments for a specific user by user ID.
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Appointments retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Appointment'
+        '404':
+          description: No appointments found for the user
+  /api/appointmentscheduler/appointment/{appointment-id}:
+    get:
+      summary: Get appointments by appointment ID
+      description: Retrieve specific appointment by appointment ID.
+      parameters:
+        - name: appointment-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Appointments retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Appointment'
+        '404':
+          description: No appointments found for the user        
+
+  /api/appointmentscheduler/{appointment-id}:
+    patch:
+      summary: Update appointment by appointment ID
+      description: Update an existing appointment by its appointment ID.
+      parameters:
+        - name: appointment-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Appointment'
+      responses:
+        '200':
+          description: Appointment updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Appointment'
+        '404':
+          description: Appointment not found
+
+    delete:
+      summary: Delete appointment by appointment ID
+      description: Delete an existing appointment by its appointment ID.
+      parameters:
+        - name: appointment-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Appointment deleted successfully
+        '404':
+          description: Appointment not found
+  /api/appointmentscheduler/appointment/{user-id}:
+    delete:
+      summary: Delete appointment by user ID
+      description: Delete an existing appointment of a user by user ID.
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Appointment deleted successfully for the user
+        '404':
+          description: Appointment not found
+  /api/activities:
+    get:
+      summary: Get all activities
+      description: Retrieve a list of all activities.
+      responses:
+        '200':
+          description: A list of activities
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+    post:
+      summary: Add a new activity
+      description: Create a new activity with the specified details.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Activity'
+      responses:
+        '201':
+          description: Activity created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+        '400':
+          description: Invalid input
+  /api/activities/{user-id}:
+    get:
+      summary: Get activities by user ID
+      description: Retrieve all activities for a specific user by user ID.
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Activities retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+        '404':
+          description: No activities found for the user
+  /api/activities/activity/{act-id}:
+    get:
+      summary: Get activities by activity ID
+      description: Retrieve specific activities by activity ID.
+      parameters:
+        - name: act-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Specific activity with given activity ID retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Activity'
+        '404':
+          description: No activities found for the user
+  /api/activities/{act-id}:
+    patch:
+      summary: Update activity by activity ID
+      description: Update an existing activity by its activity ID.
+      parameters:
+        - name: act-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Activity'
+      responses:
+        '200':
+          description: Activity updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activity'
+        '404':
+          description: Activity not found
+
+    delete:
+      summary: Delete activity by activity ID
+      description: Delete an existing activity by its activity ID.
+      parameters:
+        - name: act-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Activity deleted successfully
+        '404':
+          description: Activity not found
+  /api/activities/activity/{user-id}:
+    delete:
+      summary: Delete activity by user ID
+      description: Delete an existing activity by user ID.
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Activity for the user deleted successfully
+        '404':
+          description: Activity not found
+  /api/medicationtracker:
+    get:
+      summary: Get all medication records
+      description: Retrieve a list of all medication records.
+      responses:
+        '200':
+          description: A list of medication records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MedicationTracker'
+    post:
+      summary: Add a new medication record
+      description: Create a new medication record with the specified details.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedicationTracker'
+      responses:
+        '201':
+          description: Medication record created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedicationTracker'
+        '400':
+          description: Invalid input
+  /api/medicationtracker/{user-id}:
+    get:
+      summary: Get medication records by user ID
+      description: Retrieve all medication records for a specific user by user ID.
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Medication records retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MedicationTracker'
+        '404':
+          description: No medication records found for the user
+  /api/medicationtracker/medicationrecord/{med-id}:
+    get:
+      summary: Get medication record by medication record ID
+      description: Retrieve medication record by a medication record ID.
+      parameters:
+        - name: med-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Medication record for a medication ID retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MedicationTracker'
+        '404':
+          description: No medication records found for the user
+  /api/medicationtracker/{med-id}:
+    patch:
+      summary: Update medication record by medication ID
+      description: Update an existing medication record by its medication ID.
+      parameters:
+        - name: med-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MedicationTracker'
+      responses:
+        '200':
+          description: Medication record updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MedicationTracker'
+        '404':
+          description: Medication record not found
+
+    delete:
+      summary: Delete medication record by medication ID
+      description: Delete an existing medication record by its medication ID.
+      parameters:
+        - name: med-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Medication record deleted successfully
+        '404':
+          description: Medication record not found
+  /api/medicationtracker/medicationrecord/{user-id}:
+    delete:
+      summary: Delete a medication record for a specific user by user ID
+      description: Delete an existing medication record by user ID.
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Medication record for the user deleted successfully
+        '404':
+          description: Medication record not found
+  /api/labreports:
+    get:
+      summary: Get all lab reports
+      description: Retrieve a list of all lab reports.
+      responses:
+        '200':
+          description: A list of lab reports
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LabReport'
+    post:
+      summary: Add a new lab report
+      description: Create a new lab report with the specified details.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabReport'
+      responses:
+        '201':
+          description: Lab report created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LabReport'
+        '400':
+          description: Invalid input
+  /api/labreports/{user-id}:
+    get:
+      summary: Get lab reports by user ID
+      description: Retrieve all lab reports for a specific user by user ID.
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lab reports retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LabReport'
+        '404':
+          description: No lab reports found for the user
+  /api/labreports/labreport/{lab-id}:
+    get:
+      summary: Get a lab report by lab report ID
+      description: Retrieve lab report for a specific lab report ID.
+      parameters:
+        - name: lab-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Lab report for the lab report ID retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LabReport'
+        '404':
+          description: No lab reports found for the user
+  /api/labreports/{lab-id}:
+    patch:
+      summary: Update lab report by lab ID
+      description: Update an existing lab report by its lab ID.
+      parameters:
+        - name: lab-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LabReport'
+      responses:
+        '200':
+          description: Lab report updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LabReport'
+        '404':
+          description: Lab report not found
+
+    delete:
+      summary: Delete lab report by lab ID
+      description: Delete an existing lab report by its lab ID.
+      parameters:
+        - name: lab-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Lab report deleted successfully
+        '404':
+          description: Lab report not found
+  /api/labreports/labreport/{user-id}:
+    delete:
+      summary: Delete a lab report for a specific user by user ID
+      description: Delete an existing lab report by its user ID.
+      parameters:
+        - name: user-id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Lab report for the user deleted successfully
+        '404':
+          description: Lab report not found
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        userid:
+          type: integer
+          description: Unique identifier for the user
+        name:
+          type: string
+          description: Name of the user
+        email:
+          type: string
+          description: Email of the user
+        weight:
+          type: number
+          format: double
+          description: Weight of the user
+        height:
+          type: number
+          format: double
+          description: Height of the user
+        gender:
+          type: string
+          description: Gender of the user
+        dateofbirth:
+          type: string
+          format: date
+          description: Date of birth of the user
+      required:
+        - userid
+        - name
+        - email
+        - weight
+        - height
+        - gender
+        - dateofbirth
+    Appointment:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the appointment
+        appointmentstartdatetime:
+          type: string
+          format: date-time
+          description: Start date and time of the appointment
+        appointmentendtime:
+          type: string
+          format: date-time
+          description: End time of the appointment
+        appointmentype:
+          type: string
+          description: Type of the appointment
+        locationofappointment:
+          type: string
+          description: Location of the appointment
+        reasonforappointment:
+          type: string
+          description: Reason for the appointment
+        appointmentstatus:
+          type: string
+          description: Reason for the appointment
+        patientid:
+          type: integer
+          description: ID of the patient associated with the appointment
+      required:
+        - id
+        - appointmentstartdatetime
+        - appointmentendtime
+        - appointmentype
+        - locationofappointment
+        - reasonforappointment
+        - appointmentstatus
+        - patientid
+    Activity:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the activity
+        description:
+          type: string
+          description: Description of the activity
+        duration:
+          type: number
+          format: double
+          description: Duration of the activity in hours
+        calories:
+          type: number
+          format: double
+          description: Calories burned during the activity
+        started:
+          type: string
+          format: date-time
+          description: Start date and time of the activity
+        userid:
+          type: integer
+          description: ID of the user associated with the activity
+      required:
+        - id
+        - description
+        - duration
+        - calories
+        - started
+        - userid
+    MedicationTracker:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the medication record
+        medicinename:
+          type: string
+          description: Name of the medication
+        datetimeofintake:
+          type: string
+          format: date-time
+          description: Date and time of medication intake
+        dosage:
+          type: string
+          description: Dosage of the medication
+        medtakenornot:
+          type: string
+          description: Whether the medication was taken ("Yes" or "No")
+        patientid:
+          type: integer
+          description: ID of the patient associated with the medication record
+      required:
+        - id
+        - medicinename
+        - datetimeofintake
+        - dosage
+        - medtakenornot
+        - patientid
+    LabReport:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the lab report
+        reportname:
+          type: string
+          description: Name of the lab report
+        reporttype:
+          type: string
+          description: Type of the lab report (e.g., blood test, X-ray)
+        reportsource:
+          type: string
+          description: Source or lab where the report was generated
+        patientid:
+          type: integer
+          description: ID of the patient associated with the lab report
+      required:
+        - id
+        - reportname
+        - reporttype
+        - reportsource
+        - patientid
