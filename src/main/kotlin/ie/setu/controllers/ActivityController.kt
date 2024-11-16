@@ -50,6 +50,7 @@ object ActivityController {
     fun addActivity(ctx: Context) {
         val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
         val activity = mapper.readValue<Activity>(ctx.body())
+        ctx.json(activityDao.save(activity))
         ctx.json(activity)
         ctx.status(201)
     }
