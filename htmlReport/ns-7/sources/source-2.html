@@ -1,0 +1,176 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > JSONUtilitiesKt</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">ie.setu.utils</a>
+</div>
+
+<h1>Coverage Summary for Class: JSONUtilitiesKt (ie.setu.utils)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">JSONUtilitiesKt</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">JSONUtilitiesKt$jsonNodeToObject$$inlined$jsonToObject$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">JSONUtilitiesKt$jsonToObject$$inlined$readValue$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/12)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package ie.setu.utils
+&nbsp;
+&nbsp;import com.fasterxml.jackson.databind.ObjectMapper
+&nbsp;import com.fasterxml.jackson.databind.SerializationFeature
+&nbsp;import com.fasterxml.jackson.datatype.joda.JodaModule
+&nbsp;import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
+&nbsp;import com.fasterxml.jackson.module.kotlin.KotlinModule
+&nbsp;import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+&nbsp;import com.fasterxml.jackson.module.kotlin.readValue
+&nbsp;import kong.unirest.core.HttpResponse
+&nbsp;import kong.unirest.core.JsonNode
+&nbsp;fun jsonObjectMapper(): ObjectMapper
+<b class="nc">&nbsp;        = ObjectMapper()</b>
+<b class="nc">&nbsp;    .registerModule(JavaTimeModule())</b>
+<b class="nc">&nbsp;    .registerModule(JodaModule())</b>
+<b class="nc">&nbsp;    .registerModule(KotlinModule.Builder().build())</b>
+<b class="nc">&nbsp;    .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)</b>
+&nbsp;
+&nbsp;inline fun &lt;reified T: Any&gt; jsonToObject(json: String) : T
+<b class="nc">&nbsp;        = jacksonObjectMapper()</b>
+<b class="nc">&nbsp;    .registerModule(JodaModule())</b>
+<b class="nc">&nbsp;    .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)</b>
+<b class="nc">&nbsp;    .readValue&lt;T&gt;(json)</b>
+&nbsp;
+&nbsp;inline fun &lt;reified T: Any&gt;  jsonNodeToObject(jsonNode : HttpResponse&lt;JsonNode&gt;) : T {
+<b class="nc">&nbsp;    return jsonToObject&lt;T&gt;(jsonNode.body.toString())</b>
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-11-16 18:21</div>
+</div>
+</body>
+</html>

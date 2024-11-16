@@ -5,28 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f876a51-dcac-458c-a64b-67f328a62bef" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/controllers/UserControllerTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/helpers/Fixtures.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/helpers/ServerContainer.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/ActivityDAOTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/AppointmentSchedulingDAOTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/LabReportsDAOTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/MedicationTrackerDAOTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/UserDAOTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/JavalinConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/JavalinConfig.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/ActivityController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/ActivityController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/AppointmentController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/AppointmentController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/LabReportController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/LabReportController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/MedicationTrackingController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/MedicationTrackingController.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/UserController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/UserController.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/respository/ActivityDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/respository/ActivityDAO.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/respository/AppointmentDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/respository/AppointmentDAO.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/respository/LabReportDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/respository/LabReportDAO.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/respository/MedicationTrackerDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/respository/MedicationTrackerDAO.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/utils/JSONUtilities.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/utils/JSONUtilities.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/respository/UserDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/respository/UserDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/ie/setu/controllers/UserControllerTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/controllers/UserControllerTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/ie/setu/helpers/Fixtures.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/helpers/Fixtures.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="C:\Users\pavan\IdeaProjects\HealtrackerAppIntegrationTest\HealthTrackerApp\htmlReport" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -64,11 +64,12 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Attach to process.pid 12500.executor": "ProcessAttachDebug",
-    "JUnit.ActivityDAOTest.executor": "Coverage",
+    "JUnit.ActivityControllerTest.executor": "Debug",
+    "JUnit.ActivityDAOTest.executor": "Run",
     "JUnit.AppointmentSchedulingDAOTest.executor": "Coverage",
     "JUnit.LabReportsDAOTest.executor": "Coverage",
     "JUnit.MedicationTrackerDAOTest.executor": "Coverage",
-    "JUnit.UserControllerTest.executor": "Run",
+    "JUnit.UserControllerTest.executor": "Coverage",
     "JUnit.UserDAOTest.executor": "Coverage",
     "JUnit.ie.setu.repository in HealthTrackerApp.executor": "Coverage",
     "JUnit.repository in HealthTrackerApp.executor": "Coverage",
@@ -92,66 +93,47 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.UserDAOTest">
-    <configuration name="LabReportsDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Kotlin.AppKt">
+    <configuration name="ActivityControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthTrackerApp" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ie.setu.repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="ie.setu.*" />
+          <option name="PATTERN" value="ie.setu.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ie.setu.repository" />
-      <option name="MAIN_CLASS_NAME" value="ie.setu.repository.LabReportsDAOTest" />
-      <option name="METHOD_NAME" value="" />
+      <option name="PACKAGE_NAME" value="ie.setu.controllers" />
+      <option name="MAIN_CLASS_NAME" value="ie.setu.controllers.ActivityControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MedicationTrackerDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ActivityDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthTrackerApp" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ie.setu.repository.*" />
           <option name="ENABLED" value="true" />
         </pattern>
-        <pattern>
-          <option name="PATTERN" value="ie.setu.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ie.setu.repository" />
-      <option name="MAIN_CLASS_NAME" value="ie.setu.repository.MedicationTrackerDAOTest" />
-      <option name="METHOD_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ie.setu.repository.ActivityDAOTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthTrackerApp" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ie.setu.repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="ie.setu.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="ie.setu.repository.UserDAOTest" />
+          <option name="PATTERN" value="ie.setu.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ie.setu.repository" />
-      <option name="MAIN_CLASS_NAME" value="ie.setu.repository.UserDAOTest" />
-      <option name="METHOD_NAME" value="" />
+      <option name="PACKAGE_NAME" value="ie.setu.controllers" />
+      <option name="MAIN_CLASS_NAME" value="ie.setu.controllers.UserControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -177,21 +159,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="repository in HealthTrackerApp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AppKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ie.setu.AppKt" />
       <module name="HealthTrackerApp" />
-      <option name="TEST_OBJECT" value="directory" />
-      <dir value="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserDAOTest" />
-        <item itemvalue="JUnit.repository in HealthTrackerApp" />
+        <item itemvalue="Kotlin.AppKt" />
+        <item itemvalue="JUnit.UserControllerTest" />
         <item itemvalue="JUnit.ie.setu.repository in HealthTrackerApp" />
-        <item itemvalue="JUnit.MedicationTrackerDAOTest" />
-        <item itemvalue="JUnit.LabReportsDAOTest" />
+        <item itemvalue="JUnit.ActivityControllerTest" />
+        <item itemvalue="JUnit.ActivityDAOTest" />
       </list>
     </recent_temporary>
   </component>
@@ -222,6 +203,12 @@
       <workItem from="1731665566742" duration="15971000" />
       <workItem from="1731690424035" duration="10840000" />
       <workItem from="1731702300602" duration="2248000" />
+      <workItem from="1731755358587" duration="934000" />
+      <workItem from="1731756304746" duration="9752000" />
+      <workItem from="1731766450667" duration="250000" />
+      <workItem from="1731766710853" duration="5184000" />
+      <workItem from="1731771955883" duration="10146000" />
+      <workItem from="1731783321920" duration="2565000" />
     </task>
     <servers />
   </component>
@@ -251,7 +238,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-function">
           <url>file://$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/ActivityController.kt</url>
-          <line>29</line>
+          <line>36</line>
           <properties class="ie.setu.controllers.ActivityController" method="updateActivity">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -269,7 +256,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-function">
           <url>file://$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/respository/AppointmentDAO.kt</url>
-          <line>42</line>
+          <line>43</line>
           <properties class="ie.setu.domain.respository.AppointmentDAO" method="update">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -294,6 +281,60 @@
           </properties>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/ActivityController.kt</url>
+          <line>20</line>
+          <properties class="ie.setu.controllers.ActivityController" method="getactivityByUserID">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/ActivityController.kt</url>
+          <line>74</line>
+          <properties class="ie.setu.controllers.ActivityController" method="getActivityByID">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/ActivityController.kt</url>
+          <line>66</line>
+          <properties class="ie.setu.controllers.ActivityController" method="deleteActivityByUserID">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/respository/ActivityDAO.kt</url>
+          <line>73</line>
+          <properties class="ie.setu.domain.respository.ActivityDAO" method="deleteActivityByUserId">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/MedicationTrackingController.kt</url>
+          <line>55</line>
+          <properties class="ie.setu.controllers.MedicationTrackingController" method="getMedicationTrackerById">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/respository/MedicationTrackerDAO.kt</url>
+          <line>29</line>
+          <properties class="ie.setu.domain.respository.MedicationTrackerDAO" method="getMedicationTrackerById">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="com.fasterxml.jackson.databind.exc.InvalidDefinitionException" package="com.fasterxml.jackson.databind.exc" />
           <option name="timeStamp" value="12" />
@@ -307,30 +348,30 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/HealthTrackerApp$LabReportsDAOTest.ic" NAME="LabReportsDAOTest Coverage Results" MODIFIED="1731701625749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/HealthTrackerApp$LabReportsDAOTest.ic" NAME="LabReportsDAOTest Coverage Results" MODIFIED="1731756166520" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ie.setu.repository.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/HealthTrackerApp$ie_setu_repository_in_HealthTrackerApp.ic" NAME="ie.setu.repository in HealthTrackerApp Coverage Results" MODIFIED="1731780519782" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ie.setu.repository.*</FILTER>
       <FILTER>ie.setu.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/HealthTrackerApp$ie_setu_repository_in_HealthTrackerApp.ic" NAME="ie.setu.repository in HealthTrackerApp Coverage Results" MODIFIED="1731702340252" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>ie.setu.repository.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/HealthTrackerApp$UserDAOTest.ic" NAME="UserDAOTest Coverage Results" MODIFIED="1731703825608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>ie.setu.repository.*</FILTER>
-      <FILTER>ie.setu.*</FILTER>
-      <FILTER>ie.setu.repository.UserDAOTest</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/HealthTrackerApp$ActivityDAOTest.ic" NAME="ActivityDAOTest Coverage Results" MODIFIED="1731701494142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/HealthTrackerApp$UserDAOTest.ic" NAME="UserDAOTest Coverage Results" MODIFIED="1731756381711" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ie.setu.repository.*</FILTER>
       <FILTER>ie.setu.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/HealthTrackerApp$AppointmentSchedulingDAOTest.ic" NAME="AppointmentSchedulingDAOTest Coverage Results" MODIFIED="1731701474684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+    <SUITE FILE_PATH="coverage/HealthTrackerApp$ActivityDAOTest.ic" NAME="ActivityDAOTest Coverage Results" MODIFIED="1731756250029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>ie.setu.repository.*</FILTER>
-      <FILTER>ie.setu.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/HealthTrackerApp$MedicationTrackerDAOTest.ic" NAME="MedicationTrackerDAOTest Coverage Results" MODIFIED="1731701678050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
-      <FILTER>ie.setu.repository.*</FILTER>
-      <FILTER>ie.setu.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/HealthTrackerApp$repository_in_HealthTrackerApp.ic" NAME="repository in HealthTrackerApp Coverage Results" MODIFIED="1731702540847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/HealthTrackerApp$AppointmentSchedulingDAOTest.ic" NAME="AppointmentSchedulingDAOTest Coverage Results" MODIFIED="1731756226140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ie.setu.repository.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/HealthTrackerApp$MedicationTrackerDAOTest.ic" NAME="MedicationTrackerDAOTest Coverage Results" MODIFIED="1731756396873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ie.setu.repository.*</FILTER>
+      <FILTER>ie.setu.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/HealthTrackerApp$UserControllerTest.ic" NAME="UserControllerTest Coverage Results" MODIFIED="1731781215931" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>ie.setu.controllers.*</FILTER>
+    </SUITE>
   </component>
 </project>

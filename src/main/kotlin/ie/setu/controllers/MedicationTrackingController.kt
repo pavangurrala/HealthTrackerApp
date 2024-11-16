@@ -46,4 +46,21 @@ object MedicationTrackingController {
             ctx.status(204)
         }
     }
+    fun deleteMedicationByUserID(ctx: Context) {
+        if(medicationTrackerDao.deleteMedicationTrackingByUserID(ctx.pathParam("user-id").toInt())!=0){
+            ctx.status(204)
+        }else{
+            ctx.status(400)
+        }
+    }
+    fun getMedicationTrackerById(ctx: Context) {
+        val medicationRecord = medicationTrackerDao.getMedicationTrackerById(ctx.pathParam("med-id").toInt())
+        if(medicationRecord!=null){
+            val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+            ctx.json(mapper.writeValueAsString(medicationTrackerDao.getMedicationTrackerById(medicationRecord.id) ))
+            ctx.status(200)
+        }else{
+            ctx.status(400)
+        }
+    }
 }

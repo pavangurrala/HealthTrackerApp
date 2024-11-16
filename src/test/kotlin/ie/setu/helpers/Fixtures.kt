@@ -19,8 +19,12 @@ import ie.setu.domain.respository.LabReportDAO
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.joda.time.DateTime
 val nonExistingEmail = "112233445566778testUser@xxxxx.xx"
-val validName = "Pavan Gurrala"
-val validEmail = "pavang@gmail.com"
+val validName = "Carol Singer"
+val validEmail = "carol@singer.com"
+val validweight = 65.2
+val validheight = 165.2
+val validgender = "Female"
+val validdateofbirth = "1995-03-12"
 
 val users = arrayListOf<User>(
     User(id =1, name = "John T", email = "john@test.com", weight = 85.2, height = 180.2, gender = "Male", dateofbirth = "1990-01-01"),

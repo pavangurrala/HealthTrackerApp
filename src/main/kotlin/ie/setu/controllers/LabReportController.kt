@@ -42,4 +42,23 @@ object LabReportController {
         labReportsDao.deleteLabReport(ctx.pathParam("lab-id").toInt())
         ctx.status(204)
     }
+    //deletes lab reports for specific user
+    fun deleteReportByUserID(ctx: Context){
+        if(labReportsDao.deleteLabReportByUserId(ctx.pathParam("user-id").toInt())!=0){
+            ctx.status(204)
+        }else{
+            ctx.status(400)
+        }
+    }
+    //gets labreports for specific user
+    fun getLabReportByID(ctx: Context){
+        val labreport = labReportsDao.getLabReportsByID(ctx.pathParam("lab-id").toInt())
+        if(labreport !=null){
+            labReportsDao.getLabReportsByID(ctx.pathParam("lab-id").toInt())
+            ctx.json(labreport)
+            ctx.status(200)
+        }else{
+            ctx.status(400)
+        }
+    }
 }

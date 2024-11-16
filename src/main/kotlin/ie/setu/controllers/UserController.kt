@@ -39,20 +39,33 @@ object UserController {
         if(user != null){
             userDAO.saveUser(user)
             ctx.json(user)
+            ctx.status(201)
+        }else{
+            ctx.status(404)
         }
     }
     fun updateUser(ctx: Context) {
         val mapper = jacksonObjectMapper()
-        val user = mapper.readValue<User>(ctx.body())
-        if(user != null){
-            userDAO.updateUser(user.id, user)
-            ctx.json(user)
+        val existingUser = userDAO.getById(ctx.pathParam("user-id").toInt())
+        if(existingUser != null){
+            val user = mapper.readValue<User>(ctx.body())
+            if(user != null){
+                userDAO.updateUser(user.id, user)
+                ctx.json(user)
+                ctx.status(204)
+            }else{
+                ctx.status(404)
+            }
+        }else{
+            ctx.status(404)
         }
+
     }
     fun deleteUser(ctx: Context) {
-        val user = userDAO.deleteUser(ctx.pathParam("user-id").toInt())
-        if(user != null){
+        if(userDAO.deleteUser(ctx.pathParam("user-id").toInt())!= 0){
             ctx.status(204)
+        }else{
+            ctx.status(404)
         }
     }
 

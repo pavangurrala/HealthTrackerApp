@@ -27,9 +27,9 @@ class AppointmentDAO {
             AppointmentScheduler.selectAll().where{AppointmentScheduler.patientid eq userId}.map { mapToAppointmentScheduling(it) }
         }
     }
-    fun save(appointmentScheduling: AppointmentScheduling) {
-        transaction {
-            AppointmentScheduler.insert {
+    fun save(appointmentScheduling: AppointmentScheduling) :Int {
+        return transaction {
+            val appointmentID = AppointmentScheduler.insert {
                 it[appointmentstartdatetime] = appointmentScheduling.appointmentstartdatetime
                 it[appointmentendtime] = appointmentScheduling.appointmentendtime
                 it[appointmenttype] = appointmentScheduling.appointmenttype
@@ -37,7 +37,8 @@ class AppointmentDAO {
                 it[reasonforappointment] = appointmentScheduling.reasonforappointment
                 it[appointmentstatus] = appointmentScheduling.appointmentstatus
                 it[patientid] = appointmentScheduling.patientid
-            }
+            }get AppointmentScheduler.id
+            appointmentID
         }
     }
     fun update(id: Int, appointmentScheduling: AppointmentScheduling) {
@@ -58,7 +59,7 @@ class AppointmentDAO {
             AppointmentScheduler.deleteWhere { AppointmentScheduler.id eq id }
         }
     }
-    fun deleteappointmentbyuserid(userId: Int) {
+    fun deleteappointmentbyuserid(userId: Int):Int {
         return transaction {
             AppointmentScheduler.deleteWhere { AppointmentScheduler.patientid eq userId }
         }

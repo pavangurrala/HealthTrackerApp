@@ -1,0 +1,162 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > DBUtilitiesKt</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">ie.setu.utils</a>
+</div>
+
+<h1>Coverage Summary for Class: DBUtilitiesKt (ie.setu.utils)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DBUtilitiesKt</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (37/37)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package ie.setu.utils
+&nbsp;import ie.setu.domain.db.Activities
+&nbsp;import ie.setu.domain.db.AppointmentScheduler
+&nbsp;import ie.setu.domain.models.User
+&nbsp;import ie.setu.domain.db.Users
+&nbsp;import ie.setu.domain.models.Activity
+&nbsp;import ie.setu.domain.models.AppointmentScheduling
+&nbsp;import org.jetbrains.exposed.sql.ResultRow
+&nbsp;import ie.setu.domain.db.MedicationTracker
+&nbsp;import ie.setu.domain.models.MedicationTracking
+&nbsp;import ie.setu.domain.db.Labreports
+&nbsp;import ie.setu.domain.models.LabReport
+&nbsp;
+&nbsp;
+<b class="fc">&nbsp;fun mapToUser(it: ResultRow) = User (</b>
+<b class="fc">&nbsp;    id = it[Users.id],</b>
+<b class="fc">&nbsp;    name = it[Users.name],</b>
+<b class="fc">&nbsp;    email = it[Users.email],</b>
+<b class="fc">&nbsp;    weight = it[Users.weight],</b>
+<b class="fc">&nbsp;    height = it[Users.height],</b>
+<b class="fc">&nbsp;    gender = it[Users.gender],</b>
+<b class="fc">&nbsp;    dateofbirth = it[Users.dateofbirth]</b>
+&nbsp;)
+<b class="fc">&nbsp;fun mapToActivity(it: ResultRow) = Activity (</b>
+<b class="fc">&nbsp;    id = it[Activities.id],</b>
+<b class="fc">&nbsp;    description = it[Activities.description],</b>
+<b class="fc">&nbsp;    duration = it[Activities.duration],</b>
+<b class="fc">&nbsp;    calories = it[Activities.calories],</b>
+<b class="fc">&nbsp;    started = it[Activities.started],</b>
+<b class="fc">&nbsp;    userId = it[Activities.userid]</b>
+&nbsp;)
+<b class="fc">&nbsp;fun mapToAppointmentScheduling(it: ResultRow) = AppointmentScheduling (</b>
+<b class="fc">&nbsp;    id = it[AppointmentScheduler.id],</b>
+<b class="fc">&nbsp;    appointmentstartdatetime = it[AppointmentScheduler.appointmentstartdatetime],</b>
+<b class="fc">&nbsp;    appointmentendtime = it[AppointmentScheduler.appointmentendtime],</b>
+<b class="fc">&nbsp;    appointmenttype = it[AppointmentScheduler.appointmenttype],</b>
+<b class="fc">&nbsp;    locationofappointment = it[AppointmentScheduler.locationofappointment],</b>
+<b class="fc">&nbsp;    reasonforappointment = it[AppointmentScheduler.reasonforappointment],</b>
+<b class="fc">&nbsp;    appointmentstatus = it[AppointmentScheduler.appointmentstatus],</b>
+<b class="fc">&nbsp;    patientid = it[AppointmentScheduler.patientid]</b>
+&nbsp;)
+&nbsp;
+<b class="fc">&nbsp;fun mapToMedicationTracker(it: ResultRow) = MedicationTracking(</b>
+<b class="fc">&nbsp;    id = it[MedicationTracker.id],</b>
+<b class="fc">&nbsp;    medicinename = it[MedicationTracker.medicinename],</b>
+<b class="fc">&nbsp;    datetimeofintake = it[MedicationTracker.datetimeofintake],</b>
+<b class="fc">&nbsp;    dosage = it[MedicationTracker.dosage],</b>
+<b class="fc">&nbsp;    medtakenornot = it[MedicationTracker.medtakenornot],</b>
+<b class="fc">&nbsp;    patientid = it[MedicationTracker.patientid]</b>
+&nbsp;)
+&nbsp;
+<b class="fc">&nbsp;fun mapToLabReport(it: ResultRow) = LabReport(</b>
+<b class="fc">&nbsp;    id = it[Labreports.id],</b>
+<b class="fc">&nbsp;    reportname = it[Labreports.reportname],</b>
+<b class="fc">&nbsp;    reporttype = it[Labreports.reporttype],</b>
+<b class="fc">&nbsp;    reportsource = it[Labreports.reportsource],</b>
+<b class="fc">&nbsp;    patientid = it[Labreports.patientid]</b>
+&nbsp;)
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-11-16 18:21</div>
+</div>
+</body>
+</html>

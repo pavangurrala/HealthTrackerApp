@@ -53,4 +53,23 @@ object AppointmentController {
             appointmentDao.delete(appointment.id)
         }
     }
+    //Deletes appointment of specific user
+    fun deleteAppointmentByUserId(ctx: Context) {
+        if(appointmentDao.deleteappointmentbyuserid(ctx.pathParam("user-id").toInt()) != 0){
+            ctx.status(204)
+        }else{
+            ctx.status(404)
+        }
+    }
+    //gets appointment of specific user
+    fun getappointmentbyID(ctx: Context) {
+        val appointment = appointmentDao.getAppointmentById(ctx.pathParam("appointment-id").toInt())
+        if(appointment != null){
+            appointmentDao.getAppointmentById(ctx.pathParam("appointment-id").toInt())
+            ctx.json(appointment)
+            ctx.status(200)
+        }else{
+            ctx.status(404)
+        }
+    }
 }

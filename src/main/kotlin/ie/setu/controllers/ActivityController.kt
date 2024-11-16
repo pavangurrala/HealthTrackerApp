@@ -15,15 +15,22 @@ object ActivityController {
     fun getAllActivities(ctx: Context) {
         val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
         ctx.json(mapper.writeValueAsString(activityDao.getAll()))
+        ctx.status(200)
     }
     //get activities for specific user by ID
     fun getactivityByUserID(ctx: Context) {
         if(userDao.getById(ctx.pathParam("user-id").toInt()) !=null){
             val activities = activityDao.findByUserId(ctx.pathParam("user-id").toInt())
-            if(activities!=null){
+            if(activities.isNotEmpty()){
                 val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
                 ctx.json(mapper.writeValueAsString(activities))
+                ctx.status(200)
             }
+            else{
+                ctx.status(404)
+            }
+        }else{
+            ctx.status(404)
         }
     }
     // update the existing the activity by Activity ID
@@ -34,25 +41,47 @@ object ActivityController {
             val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
             val newactivity =mapper.readValue<Activity>(ctx.body())
             ctx.json(mapper.writeValueAsString(activityDao.updateActivity(activity.id, newactivity)))
+            ctx.status(200)
+        }else{
+            ctx.status(404)
         }
     }
     //add new Activity to the DB
     fun addActivity(ctx: Context) {
         val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
         val activity = mapper.readValue<Activity>(ctx.body())
-        activityDao.save(activity)
         ctx.json(activity)
+        ctx.status(201)
     }
     //delete the existing Activity by ActivityID from DB
     fun deleteActivity(ctx: Context) {
-        val activity = activityDao.deleteactivity(ctx.pathParam("act-id").toInt())
-        ctx.status(204)
+        if(activityDao.deleteactivity(ctx.pathParam("act-id").toInt())!=0){
+            ctx.status(204)
+        }
+        else{
+            ctx.status(404)
+        }
+
+    }
+    //delete activity belongs to specific user
+    fun deleteActivityByUserID(ctx: Context) {
+        if(activityDao.deleteActivityByUserId(ctx.pathParam("user-id").toInt())!=0){
+            ctx.status(204)
+        }else{
+            ctx.status(404)
+        }
     }
     // Get existng activity by ID from the DB
     fun getActivityByID(ctx: Context) {
         val activity = activityDao.findByActivityId(ctx.pathParam("act-id").toInt())
-        val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
-        ctx.json(mapper.writeValueAsString(activity))
+        if(activity!=null){
+            val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+            ctx.json(mapper.writeValueAsString(activity))
+            ctx.status(200)
+        }else{
+            ctx.status(404)
+        }
+
     }
 
 }

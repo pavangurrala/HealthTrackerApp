@@ -33,16 +33,17 @@ class MedicationTrackerDAO {
         }
     }
     //add a new medication record against the userID
-    fun save(medicationTracking: MedicationTracking){
-        transaction {
-            MedicationTracker.insert {
+    fun save(medicationTracking: MedicationTracking):Int{
+        return transaction {
+           val MedicationrecordID = MedicationTracker.insert {
                 it[medicinename] = medicationTracking.medicinename
                 it[datetimeofintake] = medicationTracking.datetimeofintake
                 it[dosage] = medicationTracking.dosage
                 it[medtakenornot] = medicationTracking.medtakenornot
                 it[patientid] = medicationTracking.patientid
 
-            }
+            }get MedicationTracker.id
+            MedicationrecordID
         }
     }
     //updates the existing medication record by ID
@@ -65,7 +66,7 @@ class MedicationTrackerDAO {
         }
     }
     //deletes the existing medication record with specific user ID
-    fun deleteMedicationTrackingByUserID(userID:Int){
+    fun deleteMedicationTrackingByUserID(userID:Int):Int{
         return transaction {
             MedicationTracker.deleteWhere { MedicationTracker.patientid eq userID }
         }
