@@ -6,16 +6,19 @@ import ie.setu.domain.db.Users
 import ie.setu.domain.db.AppointmentScheduler
 import ie.setu.domain.db.MedicationTracker
 import ie.setu.domain.db.Labreports
+import ie.setu.domain.db.NutritionandCalorie
 import ie.setu.domain.models.Activity
 import ie.setu.domain.models.User
 import ie.setu.domain.models.AppointmentScheduling
 import ie.setu.domain.models.MedicationTracking
 import ie.setu.domain.models.LabReport
+import ie.setu.domain.models.NutritionandCalories
 import ie.setu.domain.respository.UserDAO
 import ie.setu.domain.respository.ActivityDAO
 import ie.setu.domain.respository.AppointmentDAO
 import ie.setu.domain.respository.MedicationTrackerDAO
 import ie.setu.domain.respository.LabReportDAO
+import ie.setu.domain.respository.NutritionandCalorieDAO
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.joda.time.DateTime
 val nonExistingEmail = "112233445566778testUser@xxxxx.xx"
@@ -52,6 +55,11 @@ val labreport = arrayListOf<LabReport>(
     LabReport(id=1,reportname = "Report_name_mri", reporttype = "MRI Scan", reportsource = "ABC_Diagnostics", patientid = 1),
     LabReport(id=2,reportname = "Report_name_br", reporttype = "Blood Test", reportsource = "ANC_Hospital", patientid = 1),
     LabReport(id=3,reportname = "Report_name_ct", reporttype = "CT Scan", reportsource = "ABC_Diagnostics", patientid = 2)
+)
+val nutritionandcalories = arrayListOf<NutritionandCalories>(
+    NutritionandCalories(id=1, foodtaken = "Pasta", caloriecount = 85.2, foodtakentime = DateTime.parse("2024-11-15T07:30:00.000"), waterintake = 4.3, nutrients = 35.2, userid = 1),
+    NutritionandCalories(id=2, foodtaken = "Salad", caloriecount = 55.2, foodtakentime = DateTime.parse("2024-11-15T07:30:00.000"), waterintake = 2.3, nutrients = 65.2, userid = 1),
+    NutritionandCalories(id=3, foodtaken = "Veg Soup", caloriecount = 35.2, foodtakentime = DateTime.parse("2024-11-15T07:30:00.000"), waterintake = 1.3, nutrients = 55.2, userid = 2)
 )
 
 fun populateUserTable(): UserDAO {
@@ -93,6 +101,14 @@ fun populateLabReportTable(): LabReportDAO {
     labReportDAO.addLabReports(labreport[1])
     labReportDAO.addLabReports(labreport[2])
     return labReportDAO
+}
+fun populateNutritionandCalorieTable(): NutritionandCalorieDAO {
+    SchemaUtils.create(NutritionandCalorie)
+    val calorieDAO = NutritionandCalorieDAO()
+    calorieDAO.save(nutritionandcalories[0])
+    calorieDAO.save(nutritionandcalories[1])
+    calorieDAO.save(nutritionandcalories[2])
+    return calorieDAO
 }
 
 
