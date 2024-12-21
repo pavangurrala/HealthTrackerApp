@@ -1,5 +1,5 @@
 package ie.setu.domain.models
 
-import java.sql.Timestamp
+import org.joda.time.DateTime
 
-data class NutritionandCalories( val id: Int, val foodtaken: String, val caloriecount: Double, val foodtakentime: Timestamp, val waterintake: Double, val nutrients: Double,val userid: Int)
+data class NutritionandCalories( var id: Int, val foodtaken: String, val caloriecount: Double, val foodtakentime: DateTime, val waterintake: Double, val nutrients: Double,val userid: Int)

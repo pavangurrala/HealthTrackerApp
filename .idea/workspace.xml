@@ -5,8 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f876a51-dcac-458c-a64b-67f328a62bef" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/NutritionandCalorieController.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/db/NutritionandCalorie.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/respository/NutritionandCalorieDAO.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/repository/NutritionandCalorieDAOTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/JavalinConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/JavalinConfig.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/ActivityController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/ActivityController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/models/Activity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/models/Activity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/models/AppointmentScheduling.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/models/AppointmentScheduling.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/models/LabReport.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/models/LabReport.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/models/MedicationTracking.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/models/MedicationTracking.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/models/NutritionandCalories.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/models/NutritionandCalories.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/utils/DBUtilities.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/utils/DBUtilities.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/kotlin/ie/setu/helpers/Fixtures.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/helpers/Fixtures.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +69,7 @@
     "JUnit.AppointmentSchedulingDAOTest.executor": "Coverage",
     "JUnit.LabReportsDAOTest.executor": "Coverage",
     "JUnit.MedicationTrackerDAOTest.executor": "Coverage",
+    "JUnit.NutritionandCalorieDAOTest.executor": "Run",
     "JUnit.UserControllerTest.executor": "Coverage",
     "JUnit.UserDAOTest.executor": "Coverage",
     "JUnit.ie.setu.repository in HealthTrackerApp.executor": "Coverage",
@@ -66,9 +79,9 @@
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "feature/testcases",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/pavan/Downloads/health-tracker-rest-Lab07-AE",
+    "last_opened_file_path": "C:/Users/pavan/IdeaProjects/HealthTrackerAppNutritionandCalorie/HealthTrackerApp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -81,7 +94,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Kotlin.AppKt">
+  <component name="RunManager" selected="JUnit.NutritionandCalorieDAOTest">
     <configuration name="ActivityControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthTrackerApp" />
       <extension name="coverage">
@@ -97,7 +110,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ActivityDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="NutritionandCalorieDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthTrackerApp" />
       <extension name="coverage">
         <pattern>
@@ -106,7 +119,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ie.setu.repository" />
-      <option name="MAIN_CLASS_NAME" value="ie.setu.repository.ActivityDAOTest" />
+      <option name="MAIN_CLASS_NAME" value="ie.setu.repository.NutritionandCalorieDAOTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -156,11 +169,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.NutritionandCalorieDAOTest" />
         <item itemvalue="Kotlin.AppKt" />
         <item itemvalue="JUnit.UserControllerTest" />
         <item itemvalue="JUnit.ie.setu.repository in HealthTrackerApp" />
         <item itemvalue="JUnit.ActivityControllerTest" />
-        <item itemvalue="JUnit.ActivityDAOTest" />
       </list>
     </recent_temporary>
   </component>
@@ -197,6 +210,8 @@
       <workItem from="1731766710853" duration="5184000" />
       <workItem from="1731771955883" duration="10146000" />
       <workItem from="1731783321920" duration="6146000" />
+      <workItem from="1734792380115" duration="224000" />
+      <workItem from="1734792949966" duration="1595000" />
     </task>
     <servers />
   </component>
@@ -280,7 +295,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-function">
           <url>file://$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/ActivityController.kt</url>
-          <line>75</line>
+          <line>76</line>
           <properties class="ie.setu.controllers.ActivityController" method="getActivityByID">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -289,7 +304,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-function">
           <url>file://$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/ActivityController.kt</url>
-          <line>67</line>
+          <line>68</line>
           <properties class="ie.setu.controllers.ActivityController" method="deleteActivityByUserID">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

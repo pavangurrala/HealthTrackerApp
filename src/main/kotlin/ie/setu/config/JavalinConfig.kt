@@ -1,18 +1,20 @@
 package ie.setu.config
 
-import ie.setu.controllers.ActivityController
+import ie.setu.controllers.*
 import io.javalin.Javalin
-import ie.setu.controllers.UserController
 import ie.setu.utils.jsonObjectMapper
 import io.javalin.json.JavalinJackson
-import ie.setu.controllers.AppointmentController
-import ie.setu.controllers.MedicationTrackingController
-import ie.setu.controllers.LabReportController
 
 class JavalinConfig {
     fun startJavalinService(): Javalin {
         val app = Javalin.create{
             it.jsonMapper(JavalinJackson(jsonObjectMapper()))
+            it.bundledPlugins.enableCors{ cors->
+                cors.addRule{ crs->
+                    crs.allowHost("http://localhost:8082/")
+                    crs.allowCredentials = true
+                }
+            }
         }.apply {
             exception(Exception::class.java) { e, ctx -> e.printStackTrace() }
             error(404) { ctx -> ctx.json("404-Not Found") }
@@ -58,5 +60,12 @@ class JavalinConfig {
         app.patch("/api/labreports/{lab-id}", LabReportController::updateLabReport)
         app.delete("/api/labreports/{lab-id}", LabReportController::deleteLabReport)
         app.delete("/api/labreports/labreport/{user-id}", LabReportController::deleteReportByUserID)
+        app.get("/api/nutritionandcalories", NutritionandCalorieController::getAll)
+        app.get("/api/nutritionandcalories/{user-id}", NutritionandCalorieController::getNutritionAndCalorieByUserId)
+        app.get("/api/nutritionandcalories/nc/{nc-id}", NutritionandCalorieController::getnutrionandCalorieById)
+        app.post("/api/nutritionandcalories", NutritionandCalorieController::addnutrionandCalorie)
+        app.patch("/api/nutritionandcalories/{nc-id}", NutritionandCalorieController::updateNutrionAndCalorie)
+        app.delete("/api/nutritionandcalories/{nc-id}", NutritionandCalorieController::deleteNutrionAndCalorie)
+        app.delete("/api/nutritionandcalories/nc/{user-id}", NutritionandCalorieController::deleteNutrionAndCalorieByUserId)
     }
 }

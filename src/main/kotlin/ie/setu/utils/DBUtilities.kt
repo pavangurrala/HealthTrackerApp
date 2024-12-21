@@ -1,15 +1,7 @@
 package ie.setu.utils
-import ie.setu.domain.db.Activities
-import ie.setu.domain.db.AppointmentScheduler
-import ie.setu.domain.models.User
-import ie.setu.domain.db.Users
-import ie.setu.domain.models.Activity
-import ie.setu.domain.models.AppointmentScheduling
+import ie.setu.domain.db.*
 import org.jetbrains.exposed.sql.ResultRow
-import ie.setu.domain.db.MedicationTracker
-import ie.setu.domain.models.MedicationTracking
-import ie.setu.domain.db.Labreports
-import ie.setu.domain.models.LabReport
+import ie.setu.domain.models.*
 
 
 fun mapToUser(it: ResultRow) = User (
@@ -55,4 +47,13 @@ fun mapToLabReport(it: ResultRow) = LabReport(
     reporttype = it[Labreports.reporttype],
     reportsource = it[Labreports.reportsource],
     patientid = it[Labreports.patientid]
+)
+fun mapToNutritionandCalories(it: ResultRow) = NutritionandCalories(
+    id = it[NutritionandCalorie.id],
+    foodtaken = it[NutritionandCalorie.foodtaken],
+    caloriecount = it[NutritionandCalorie.caloriecount],
+    foodtakentime = it[NutritionandCalorie.foodtakentime],
+    waterintake = it[NutritionandCalorie.waterintake],
+    nutrients = it[NutritionandCalorie.nutrients],
+    userid = it[NutritionandCalorie.userid]
 )
