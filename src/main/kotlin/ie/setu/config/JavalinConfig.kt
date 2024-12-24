@@ -11,7 +11,7 @@ class JavalinConfig {
             it.jsonMapper(JavalinJackson(jsonObjectMapper()))
             it.bundledPlugins.enableCors{ cors->
                 cors.addRule{ crs->
-                    crs.allowHost("http://localhost:8082/")
+                    crs.allowHost("http://localhost:8082/","https://tourmaline-raindrop-d685bd.netlify.app/")
                     crs.allowCredentials = true
                 }
             }
