@@ -20,7 +20,7 @@ class ActivitiesControllerTest {
     private val db = DbConfig().getDbConnection()
     private val app = ServerContainer.instance
     private val origin = "http://localhost:" + app.port()
-    val addedUser : User = jsonToObject(addUser(24, "John Sullivan", "johns@gmail.com", 85.2, 170.5, "Male",
+    val addedUser : User = jsonToObject(addUser(35, "John Sullivan", "johns@gmail.com", 85.2, 170.5, "Male",
         validdateofbirth).body.toString())
     @Nested
     inner class ReadActivities{

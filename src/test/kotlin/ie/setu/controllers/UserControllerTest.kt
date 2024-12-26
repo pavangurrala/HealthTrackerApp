@@ -67,7 +67,7 @@ class UserControllerTest {
         fun `create a new user with all the details returns 200 response`() {
             //Arrange & Act & Assert
             //    add the user and verify return code (using fixture data)
-            val addResponse = addUser(6,validName, validEmail, validweight,validheight, validgender, validdateofbirth)
+            val addResponse = addUser(28,validName, validEmail, validweight,validheight, validgender, validdateofbirth)
             assertEquals(201, addResponse.status)
 
             //Assert - retrieve the added user from the database and verify return code
@@ -88,15 +88,15 @@ class UserControllerTest {
         @Test
         fun `update a existing user with all the details returns 204 response`() {
             //Arrange - add the user that we plan to do an update on
-            val addedResponse = addUser(6,validName, validEmail, validweight,validheight, validgender, validdateofbirth)
+            val addedResponse = addUser(29,validName, validEmail, validweight,validheight, validgender, validdateofbirth)
             val addedUser : User = jsonToObject(addedResponse.body.toString())
             //Act & Assert - update the email and name of the retrieved user and assert 204 is returned
-            assertEquals(204, updateUser(addedUser.id, "Carol S", "carol@singernew.com", validweight, validheight,validgender,validdateofbirth).status)
+            assertEquals(204, updateUser(addedUser.id, "James S", "jamesS@gmail.com", validweight, validheight,validgender,validdateofbirth).status)
             //Act & Assert - retrieve updated user and assert details are correct
             val updatedUserResponse = retrieveUserById(addedUser.id)
             val updatedUser : User = jsonToObject(updatedUserResponse.body.toString())
-            assertEquals("Carol S", updatedUser.name)
-            assertEquals("carol@singernew.com", updatedUser.email)
+            assertEquals("James S", updatedUser.name)
+            assertEquals("jamesS@gmail.com", updatedUser.email)
             //After - restore the db to previous state by deleting the added user
             deleteUser(addedUser.id)
         }
@@ -104,7 +104,7 @@ class UserControllerTest {
         fun `updating a user when it doesn't exist, returns a 404 response`() {
 
             //Act & Assert - attempt to update the email and name of user that doesn't exist
-            assertEquals(404, updateUser(7, "Carol S", "carol@singernew.com", validweight, validheight,validgender,validdateofbirth).status)
+            assertEquals(404, updateUser(-1, "Carol S", "carol@singernew.com", validweight, validheight,validgender,validdateofbirth).status)
         }
     }
     @Nested
@@ -118,7 +118,7 @@ class UserControllerTest {
         @Test
         fun `delete a exisiting user with all the details returns 204 response`() {
             //Arrange - add the user that we plan to do an update on
-            val addedResponse = addUser(6,validName, validEmail, validweight,validheight, validgender, validdateofbirth)
+            val addedResponse = addUser(30,validName, validEmail, validweight,validheight, validgender, validdateofbirth)
             val addedUser : User = jsonToObject(addedResponse.body.toString())
             //Act & Assert - delete the added user and assert a 204 is returned
             assertEquals(204, deleteUser(addedUser.id).status)

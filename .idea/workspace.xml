@@ -67,7 +67,7 @@
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "feature/NutrientsAndCalories",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/pavan/vue-frontend/healthtrackeractivities/HealthTrackerAppFrontEnd",
     "node.js.detected.package.eslint": "true",
@@ -200,6 +200,7 @@
       <workItem from="1731783321920" duration="6146000" />
       <workItem from="1734792380115" duration="224000" />
       <workItem from="1734792949966" duration="22484000" />
+      <workItem from="1735218342142" duration="2240000" />
     </task>
     <servers />
   </component>
