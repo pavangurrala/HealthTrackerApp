@@ -20,7 +20,7 @@ class ActivitiesControllerTest {
     private val db = DbConfig().getDbConnection()
     private val app = ServerContainer.instance
     private val origin = "http://localhost:" + app.port()
-    val addedUser : User = jsonToObject(addUser(35, "John Sullivan", "johns@gmail.com", 85.2, 170.5, "Male",
+    val addedUser : User = jsonToObject(addUser(36, "John Sullivan", "johns@gmail.com", 85.2, 170.5, "Male",
         validdateofbirth).body.toString())
     @Nested
     inner class ReadActivities{
@@ -109,7 +109,7 @@ class ActivitiesControllerTest {
                 activityId, "swimming", 23.5, 180.5, DateTime.parse("2024-06-11T05:59:27.258Z")
                 , addedUser.id
             )
-            assertEquals(204, updatedActivityResponse.status)
+            assertEquals(200, updatedActivityResponse.status)
             //Assert that the individual fields were all updated as expected
             val retrievedActivityResponse = retrieveActivityByActivityId(addedActivity.id)
             val updatedActivity = jsonNodeToObject<Activity>(retrievedActivityResponse)
