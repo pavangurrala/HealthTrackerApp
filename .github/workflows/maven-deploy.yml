@@ -17,6 +17,12 @@ jobs:
           cache: 'maven'
       - name: Maven Package
         run: mvn -B clean package -DskipTests
+        # Create Artifact - Jar Builds 
+      - name: Jar Builds
+        uses: actions/upload-artifact@v4.4.2
+        with:
+          name: Jar with Builds
+          path: target/*.jar
     
   test:
     name: Maven Tests
@@ -44,11 +50,6 @@ jobs:
         run: railway up --service ${{ secrets.RAILWAY_SERVICE }}
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-      # Create Artifact - Jar Builds 
-      - name: Jar Builds
-        uses: actions/upload-artifact@v4.4.2
-        with:
-          name: Jar with Builds
-          path: target/*.jar
+      
 
 
