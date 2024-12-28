@@ -17,16 +17,23 @@ object LabReportController {
             val labReports = labReportsDao.getLabReportsByUserID(ctx.pathParam("user-id").toInt())
             if(labReports!=null){
                 ctx.json(labReports)
+                ctx.status(201)
             }
+            else{
+                ctx.status(404)
+            }
+        }else{
+            ctx.status(404)
         }
     }
     fun addLabReport(ctx: Context){
         val mapper = jacksonObjectMapper()
         val labreport = mapper.readValue<LabReport>(ctx.body())
-        if(labreport !=null){
-            labReportsDao.addLabReports(labreport)
-            ctx.json(labreport)
-        }
+        val labreportID = labReportsDao.addLabReports(labreport)
+        labreport.id = labreportID
+        ctx.json(labreport)
+        ctx.status(201)
+
     }
     fun updateLabReport(ctx: Context){
         val mapper = jacksonObjectMapper()
@@ -35,12 +42,23 @@ object LabReportController {
             val updatedlabreport = mapper.readValue<LabReport>(ctx.body())
             if(updatedlabreport !=null){
                 ctx.json(labReportsDao.updateLabReport(labreport.id, updatedlabreport))
+                ctx.status(200)
+            }else{
+                ctx.status(404)
             }
+        }else{
+            ctx.status(404)
         }
     }
     fun deleteLabReport(ctx: Context){
-        labReportsDao.deleteLabReport(ctx.pathParam("lab-id").toInt())
-        ctx.status(204)
+        val labreport = labReportsDao.getLabReportsByID(ctx.pathParam("lab-id").toInt())
+        if(labreport !=null){
+            labReportsDao.deleteLabReport(ctx.pathParam("lab-id").toInt())
+            ctx.status(204)
+        }else{
+            ctx.status(404)
+        }
+
     }
     //deletes lab reports for specific user
     fun deleteReportByUserID(ctx: Context){
@@ -58,7 +76,7 @@ object LabReportController {
             ctx.json(labreport)
             ctx.status(200)
         }else{
-            ctx.status(400)
+            ctx.status(404)
         }
     }
 }

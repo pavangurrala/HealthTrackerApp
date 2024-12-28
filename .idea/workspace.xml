@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f876a51-dcac-458c-a64b-67f328a62bef" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/controllers/AppointmentControllerTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/controllers/LabReportControllerTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/controllers/MedicationTrackingControllerTest.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/kotlin/ie/setu/controllers/NutritionAndCaloriesControllerTest.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/JavalinConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/config/JavalinConfig.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/AppointmentController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/AppointmentController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/LabReportController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/LabReportController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/MedicationTrackingController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/MedicationTrackingController.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/NutritionandCalorieController.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/NutritionandCalorieController.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,9 +61,14 @@
     "Attach to process.pid 12500.executor": "ProcessAttachDebug",
     "JUnit.ActivityControllerTest.executor": "Debug",
     "JUnit.ActivityDAOTest.executor": "Run",
+    "JUnit.AppointmentControllerTest$createAppointments.add an activity when a user exists for it, returns a 201 response.executor": "Debug",
+    "JUnit.AppointmentControllerTest.executor": "Run",
     "JUnit.AppointmentSchedulingDAOTest.executor": "Coverage",
+    "JUnit.LabReportControllerTest.executor": "Run",
     "JUnit.LabReportsDAOTest.executor": "Coverage",
     "JUnit.MedicationTrackerDAOTest.executor": "Coverage",
+    "JUnit.MedicationTrackingControllerTest.executor": "Run",
+    "JUnit.NutritionAndCaloriesControllerTest.executor": "Run",
     "JUnit.NutritionandCalorieDAOTest.executor": "Run",
     "JUnit.UserControllerTest.executor": "Coverage",
     "JUnit.UserDAOTest.executor": "Coverage",
@@ -83,7 +95,7 @@
   }
 }]]></component>
   <component name="RunManager" selected="Kotlin.AppKt">
-    <configuration name="ActivityControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AppointmentControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthTrackerApp" />
       <extension name="coverage">
         <pattern>
@@ -92,28 +104,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ie.setu.controllers" />
-      <option name="MAIN_CLASS_NAME" value="ie.setu.controllers.ActivityControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="ie.setu.controllers.AppointmentControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="NutritionandCalorieDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="HealthTrackerApp" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ie.setu.repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ie.setu.repository" />
-      <option name="MAIN_CLASS_NAME" value="ie.setu.repository.NutritionandCalorieDAOTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LabReportControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthTrackerApp" />
       <extension name="coverage">
         <pattern>
@@ -122,28 +119,38 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ie.setu.controllers" />
-      <option name="MAIN_CLASS_NAME" value="ie.setu.controllers.UserControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="ie.setu.controllers.LabReportControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ie.setu.repository in HealthTrackerApp" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="MedicationTrackingControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="HealthTrackerApp" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ie.setu.repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-        <pattern>
-          <option name="PATTERN" value="ie.setu.*" />
+          <option name="PATTERN" value="ie.setu.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="ie.setu.repository" />
-      <option name="MAIN_CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="PACKAGE_NAME" value="ie.setu.controllers" />
+      <option name="MAIN_CLASS_NAME" value="ie.setu.controllers.MedicationTrackingControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NutritionAndCaloriesControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="HealthTrackerApp" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ie.setu.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ie.setu.controllers" />
+      <option name="MAIN_CLASS_NAME" value="ie.setu.controllers.NutritionAndCaloriesControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -158,10 +165,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Kotlin.AppKt" />
-        <item itemvalue="JUnit.NutritionandCalorieDAOTest" />
-        <item itemvalue="JUnit.UserControllerTest" />
-        <item itemvalue="JUnit.ie.setu.repository in HealthTrackerApp" />
-        <item itemvalue="JUnit.ActivityControllerTest" />
+        <item itemvalue="JUnit.NutritionAndCaloriesControllerTest" />
+        <item itemvalue="JUnit.LabReportControllerTest" />
+        <item itemvalue="JUnit.MedicationTrackingControllerTest" />
+        <item itemvalue="JUnit.AppointmentControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -200,7 +207,7 @@
       <workItem from="1731783321920" duration="6146000" />
       <workItem from="1734792380115" duration="224000" />
       <workItem from="1734792949966" duration="22484000" />
-      <workItem from="1735218342142" duration="2240000" />
+      <workItem from="1735218342142" duration="46600000" />
     </task>
     <servers />
   </component>
@@ -236,15 +243,6 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-function">
-          <url>file://$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/AppointmentController.kt</url>
-          <line>40</line>
-          <properties class="ie.setu.controllers.AppointmentController" method="updateAppointment">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-function">
           <url>file://$PROJECT_DIR$/src/main/kotlin/ie/setu/domain/respository/AppointmentDAO.kt</url>
@@ -311,7 +309,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-function">
           <url>file://$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/MedicationTrackingController.kt</url>
-          <line>55</line>
+          <line>67</line>
           <properties class="ie.setu.controllers.MedicationTrackingController" method="getMedicationTrackerById">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
@@ -326,6 +324,33 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/src/test/kotlin/ie/setu/controllers/AppointmentControllerTest.kt</url>
+          <line>164</line>
+          <properties class="ie.setu.controllers.AppointmentControllerTest" method="retrieveAppointmentsByUserId">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/src/test/kotlin/ie/setu/controllers/AppointmentControllerTest.kt</url>
+          <line>70</line>
+          <properties class="ie.setu.controllers.AppointmentControllerTest.readAppointments" method="get all appointments by user id when no appointments exist returns 404 response">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-function">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/ie/setu/controllers/AppointmentController.kt</url>
+          <line>21</line>
+          <properties class="ie.setu.controllers.AppointmentController" method="getAppointmentByUserId">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="com.fasterxml.jackson.databind.exc.InvalidDefinitionException" package="com.fasterxml.jackson.databind.exc" />

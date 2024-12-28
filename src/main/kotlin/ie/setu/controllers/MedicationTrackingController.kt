@@ -22,14 +22,21 @@ object MedicationTrackingController {
             if(medications!=null){
                 val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
                 ctx.json(mapper.writeValueAsString(medications))
+                ctx.status(201)
+            }else{
+                ctx.status(404)
             }
+        }else{
+            ctx.status(404)
         }
     }
     fun addMedication(ctx: Context) {
         val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
         val medication = mapper.readValue<MedicationTracking>(ctx.body())
-        medicationTrackerDao.save(medication)
+        val medicationID = medicationTrackerDao.save(medication)
+        medication.id = medicationID
         ctx.json(medication)
+        ctx.status(201)
     }
     fun updateMedication(ctx: Context) {
         val currentmedication = medicationTrackerDao.getMedicationTrackerById(ctx.pathParam("med-id").toInt())
@@ -37,6 +44,9 @@ object MedicationTrackingController {
             val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
             val updatedmedication = mapper.readValue<MedicationTracking>(ctx.body())
             ctx.json(mapper.writeValueAsString(medicationTrackerDao.updateMedicationTracking(currentmedication.id,updatedmedication)))
+            ctx.status(200)
+        }else{
+            ctx.status(404)
         }
     }
     fun deleteMedication(ctx: Context) {
@@ -44,13 +54,15 @@ object MedicationTrackingController {
         if(medication!=null){
             medicationTrackerDao.deleteMedicationTracking(ctx.pathParam("med-id").toInt())
             ctx.status(204)
+        }else{
+            ctx.status(404)
         }
     }
     fun deleteMedicationByUserID(ctx: Context) {
         if(medicationTrackerDao.deleteMedicationTrackingByUserID(ctx.pathParam("user-id").toInt())!=0){
             ctx.status(204)
         }else{
-            ctx.status(400)
+            ctx.status(404)
         }
     }
     fun getMedicationTrackerById(ctx: Context) {
@@ -60,7 +72,7 @@ object MedicationTrackingController {
             ctx.json(mapper.writeValueAsString(medicationTrackerDao.getMedicationTrackerById(medicationRecord.id) ))
             ctx.status(200)
         }else{
-            ctx.status(400)
+            ctx.status(404)
         }
     }
 }

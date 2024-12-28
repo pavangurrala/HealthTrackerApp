@@ -23,7 +23,13 @@ object NutritionandCalorieController {
             if(ncrecords != null){
                 val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
                 ctx.json(mapper.writeValueAsString(ncrecords))
+                ctx.status(201)
             }
+            else{
+                ctx.status(404)
+            }
+        }else{
+            ctx.status(404)
         }
     }
     //adds nutrionandCalorie record in db table
@@ -53,6 +59,8 @@ object NutritionandCalorieController {
             }else{
                 ctx.status(404)
             }
+        }else{
+            ctx.status(404)
         }
     }
     // deletes nutrionandCalorie record by id in db table

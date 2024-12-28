@@ -25,17 +25,24 @@ object AppointmentController {
             if(appointments!=null){
                 val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
                 ctx.json(mapper.writeValueAsString(appointments))
+                ctx.status(201)
+            }else
+            {
+                ctx.status(404)
             }
+        }
+        else{
+            ctx.status(404)
         }
     }
     //Add new appointment to the DB
     fun addAppointment(ctx: Context) {
         val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
         val newappointment = mapper.readValue<AppointmentScheduling>(ctx.body())
-        if(newappointment != null){
-            appointmentDao.save(newappointment)
-            ctx.json(newappointment)
-        }
+        val appointmentID = appointmentDao.save(newappointment)
+        newappointment.id = appointmentID
+        ctx.json(newappointment)
+        ctx.status(201)
     }
     //update existing appointment by ID
     fun updateAppointment(ctx: Context) {
@@ -44,6 +51,9 @@ object AppointmentController {
             val mapper = jacksonObjectMapper().registerModule(JodaModule()).configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
             val updatedappointment = mapper.readValue<AppointmentScheduling>(ctx.body())
             appointmentDao.update(appointment.id,updatedappointment)
+            ctx.status(200)
+        }else{
+            ctx.status(404)
         }
     }
     //delete the existing appointment by ID
@@ -51,6 +61,9 @@ object AppointmentController {
         val appointment = appointmentDao.getAppointmentById(ctx.pathParam("appointment-id").toInt())
         if(appointment != null){
             appointmentDao.delete(appointment.id)
+            ctx.status(204)
+        }else{
+            ctx.status(404)
         }
     }
     //Deletes appointment of specific user
